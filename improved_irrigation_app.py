@@ -132,7 +132,8 @@ if st.button("Get Irrigation Advice", type="primary"):
                 temp = data['main']['temp']
                 humidity = data['main']['humidity']
                 weather = data['weather'][0]['main']
-                rainfall = data.get('rain', {}).get('1h', 0.0)
+                rain_data = data.get("rain", {})
+                rainfall = rain_data.get("1h", rain_data.get("3h", 0.0))
 
                 # Weather display
                 st.subheader(f"🌧️ {labels['weather']}")
